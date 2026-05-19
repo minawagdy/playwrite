@@ -6,11 +6,13 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Opt into Node.js 24
     steps:
     - uses: actions/checkout@v5
     - uses: actions/setup-node@v5
       with:
-        node-version: lts/*
+        node-version: '22'  # Use Node.js 22 instead of lts/*
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
